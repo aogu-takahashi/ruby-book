@@ -28,4 +28,77 @@ p not(f1 || t1) # not f1 || t1 と同じ
 status = "error"
 unless status == "ok"
   p "異常です"
+else
+  p "正常です"
 end
+
+# unlessの戻り値を変数に代入する
+status = "error"
+message =
+  unless status == "ok"
+    "異常です"
+  else
+    "正常です"
+  end
+p "message: #{message}"
+
+# unlessを修飾子として使う
+"異常があります" unless status == "ok"
+
+# == true や == false は使用しない
+s = ""
+if s.empty? == true
+  p "空です"
+end
+
+if s.empty?
+  p "空です"
+end
+
+unless s.empty?
+  p "空ではありません"
+end
+
+# == nil は使用しない
+user = nil
+
+if user == nil
+  p "ユーザーが存在しません"
+end
+
+if user.nil?
+  p "ユーザーが存在しません"
+end
+
+# case文
+# 複数の値と比較する場合、elsifよりシンプルに記述できる
+country = "italy"
+case country
+when "japan"
+  p "こんにちは"
+when "us"
+  p "hello"
+when "italy"
+  p "ciao"
+else
+  p "???"
+end
+
+# case文のwhen節に複数の値を指定できる
+country = "アメリカ"
+case country
+when "japan", "日本"
+  p "こんにちは"
+when "us", "アメリカ"
+  p "hello"
+else
+  p "???"
+end
+
+# case文の返り値を変数に代入する
+message =
+  case country
+  when "japan", "日本"
+    "こんにちは"
+  end
+
